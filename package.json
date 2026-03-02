@@ -1,7 +1,7 @@
 {
-  "name": "true-skill",
-  "version": "1.0.0",
-  "description": "",
+  "name": "@andy-cave-nf/true-skill",
+  "version": "0.0.0",
+  "description": "An implementation of the true-skill ranking system",
   "license": "ISC",
   "author": "",
   "type": "module",
@@ -10,6 +10,9 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "start": "tsx src/index.ts",
     "test": "vitest",
