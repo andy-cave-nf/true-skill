@@ -5,7 +5,11 @@
   "license": "ISC",
   "author": "",
   "type": "module",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "start": "tsx src/index.ts",
     "test": "vitest",
@@ -15,7 +19,11 @@
     "format": "prettier --write '**/*.ts'",
     "lint": "eslint '**/*.ts'",
     "lint:fix": "eslint --fix '**/*.ts'",
-    "prepare": "husky"
+    "prepare": "husky",
+    "build": "tsc -p ."
+  },
+  "lint-staged": {
+    "**/*.ts": "prettier --write"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.4.2",
@@ -25,9 +33,41 @@
     "eslint": "^10.0.2",
     "eslint-config-prettier": "^10.1.8",
     "husky": "^9.1.7",
+    "lint-staged": "^16.3.1",
     "prettier": "^3.8.1",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.56.1",
     "vitest": "^4.0.18"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      [
+        "@semantic-release/github",
+        {
+          "assets": [
+            {
+              "path": "dist.zip",
+              "label": "Distribution"
+            }
+          ]
+        }
+      ],
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "package.json",
+            "CHANGELOG.md"
+          ],
+          "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+        }
+      ]
+    ]
   }
 }
