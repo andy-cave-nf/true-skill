@@ -1,4 +1,5 @@
-import {Rating} from "../../src/rating";
+import type {Rating} from "../../src/rating";
+import {DefaultMatch, type Match} from "../../src/match";
 
 describe('given two rated players and a default match result, return updated ratings with winner increasing mu and loser decreasing mu', () => {
     let player1: Rating
@@ -15,10 +16,10 @@ describe('given two rated players and a default match result, return updated rat
             mu: 15,
             sigma: (15/3)
         }
-        match = DefaultMatch(player1, player2)
+        match = new DefaultMatch(player1, player2);
         [newPlayer1, newPlayer2] = match.rate()
     })
-    it.todo('given two players when a match result is processed then winner mu increases and loser mu decreases', () => {
+    it('given two players when a match result is processed then winner mu increases and loser mu decreases', () => {
         expect(newPlayer1.mu).toBeGreaterThan(player1.mu)
         expect(newPlayer2.mu).toBeLessThan(player2.mu)
     })
@@ -28,3 +29,8 @@ describe('given two rated players and a default match result, return updated rat
 describe.todo('given two rated players and a default match result return updated ratings where sigma is greater than 0', () => {
     it.todo('given two players and a match result when a match is processed then sigma is greater than 0', () => {})
 })
+describe.todo('given two players with equal sigma and equal mu, when a draw is processed then the new ratings are equal',()=> {
+    it.todo('given two players with equal sigma and mu, when a draw is processed then new mus are equal')
+    it.todo('given two players with equal sigma and mu, when a draw is processed then new sigmas are equal')
+})
+
