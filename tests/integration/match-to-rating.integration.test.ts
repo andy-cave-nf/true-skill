@@ -1,6 +1,6 @@
 import {Rating} from "../../src/rating";
 
-describe('given two rated players and a match result, return updated ratings with winner increasing mu and loser decreasing mu', () => {
+describe('given two rated players and a default match result, return updated ratings with winner increasing mu and loser decreasing mu', () => {
     let player1: Rating
     let player2: Rating
     let newPlayer1: Rating
@@ -24,4 +24,7 @@ describe('given two rated players and a match result, return updated ratings wit
     })
     it.todo('given two players when a match result is processed then sigma for both teams is different')
     it.todo('given two teams of equal size, when a match result is processed then winners mu increases and losers mu decreases')
+})
+describe.todo('given two rated players and a default match result return updated ratings where sigma is greater than 0', () => {
+    it.todo('given two players and a match result when a match is processed then sigma is greater than 0', () => {})
 })
