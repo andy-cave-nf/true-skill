@@ -1,3 +1,4 @@
+import {Rating} from "../../src/rating";
 
 describe('given two rated players and a match result, return updated ratings with winner increasing mu and loser decreasing mu', () => {
     let player1: Rating
